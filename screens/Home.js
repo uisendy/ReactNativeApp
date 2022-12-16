@@ -24,7 +24,7 @@ import {
   fetchMealCategory,
 } from '../redux/MealCategorySlice';
 import {useDispatch, useSelector} from 'react-redux';
-import {getRandomMeal, fetchRandomMeal} from '../redux/RandomMealSlice';
+import {getRandomMeal} from '../redux/RandomMealSlice';
 
 function renderCategoryHeader() {
   return (
@@ -132,7 +132,6 @@ const Home = ({navigation}) => {
   useEffect(() => {
     if (requestStatus) {
       dispatch(fetchMealCategory());
-      dispatch(fetchRandomMeal());
       setRequestStatus(false);
     }
   }, []);
