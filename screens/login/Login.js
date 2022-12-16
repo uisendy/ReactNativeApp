@@ -1,40 +1,67 @@
 import {View, Text, StyleSheet} from 'react-native';
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {CustomInput, TextComponent} from '../../components';
 import {COLORS, FONTS, SIZES} from '../../global';
-import {useDispatch} from 'react-redux';
-import {addAuth} from '../../redux/AuthenticationSlice';
-import {fetchMealCategory} from '../../redux/MealCategorySlice';
-import {fetchRandomMeal} from '../../redux/RandomMealSlice';
-import {nanoid} from '@reduxjs/toolkit';
+import {useDispatch, useSelector} from 'react-redux';
+import {selectAllAuth} from '../../redux/AuthenticationSlice';
+import {auth} from '../../firebase';
 
 const Login = ({navigation}) => {
-  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const dispatch = useDispatch();
 
-  const onSaveAuth = () => {
-    if (username && password) {
-      dispatch(
-        addAuth({
-          id: nanoid(),
-          username,
-          password,
-        }),
-      );
+  const signUp = useSelector(selectAllAuth);
 
-      setUsername('');
-      setPassword('');
+  const emailRegex =
+    /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged(user => {
+      if (user) {
+        navigation.navigate('Home');
+      }
+    });
+
+    return unsubscribe;
+  }, []);
+
+  const onSaveAuth = () => {
+    let login = false;
+    if (email && password) {
+      if (emailRegex.test(email)) {
+        setEmail('');
+        setPassword('');
+
+        auth
+          .signInWithEmailAndPassword(email, password)
+          .then(userCredential => {
+            const user = userCredential.user;
+            if (user) {
+              return (login = true);
+            }
+          })
+          .catch(error => {
+            alert(error.message);
+          });
+      } else {
+        alert('Bad Email:Check your email Address and Try again');
+        login = false;
+      }
+    } else {
+      alert('Please Provide Email and Password');
+      login = false;
     }
+    return login;
   };
 
   return (
     <View style={styles.container}>
       <Text style={styles.welcome}>Welcome Back</Text>
       <CustomInput
-        placeholder="Username"
-        value={username}
-        setValue={setUsername}
+        placeholder="abc@email.xyz"
+        value={email}
+        setValue={setEmail}
       />
       <CustomInput
         placeholder="password"
@@ -53,10 +80,7 @@ const Login = ({navigation}) => {
         contentContainerStyle={styles.containerStyleOne}
         label="login"
         onPress={() => {
-          onSaveAuth();
-          // dispatch(fetchMealCategory());
-          // dispatch(fetchRandomMeal());
-          navigation.replace('Home');
+          onSaveAuth() && navigation.replace('Home');
         }}
       />
     </View>
