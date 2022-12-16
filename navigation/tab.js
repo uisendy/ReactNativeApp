@@ -2,7 +2,7 @@ import React from 'react';
 import {View} from 'react-native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
-import {Home} from '../screens';
+import {Home, Bookmark, Settings, Search} from '../screens';
 import {icons} from '../global';
 import {TabIcon} from '../components';
 
@@ -27,7 +27,7 @@ const Tabs = () => {
       />
       <Tab.Screen
         name="Search"
-        component={Home}
+        component={Search}
         options={{
           tabBarIcon: ({focused}) => (
             <TabIcon focused={focused} icon={icons.search} />
@@ -36,7 +36,7 @@ const Tabs = () => {
       />
       <Tab.Screen
         name="Bookmark"
-        component={Home}
+        component={Bookmark}
         options={{
           tabBarIcon: ({focused}) => (
             <TabIcon focused={focused} icon={icons.bookmark} />
@@ -45,7 +45,7 @@ const Tabs = () => {
       />
       <Tab.Screen
         name="Settings"
-        component={Home}
+        component={Settings}
         options={{
           tabBarIcon: ({focused}) => (
             <TabIcon focused={focused} icon={icons.settings} />
