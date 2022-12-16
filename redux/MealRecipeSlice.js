@@ -12,9 +12,7 @@ export const fetchMealRecipe = createAsyncThunk(
   'mealRecipe/fetchMealRecipe',
   async id => {
     try {
-      console.log(id);
       const response = await axios.get(`${urlMap.byMealId}${id}`);
-
       return response.data;
     } catch (err) {
       throw new Error(err);
