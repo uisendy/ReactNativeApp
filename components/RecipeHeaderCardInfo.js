@@ -3,7 +3,6 @@ import React from 'react';
 import {SIZES, COLORS, FONTS} from '../global';
 
 const RecipeHeaderCardInfo = ({recipeItem}) => {
-  console.log(recipeItem);
   return (
     <View style={styles.recipeCardContainer}>
       <View
@@ -26,7 +25,7 @@ const RecipeHeaderCardInfo = ({recipeItem}) => {
               color: COLORS.white,
               ...FONTS.h3,
             }}>
-            {recipeItem.strMeal}
+            {recipeItem?.strMeal}
           </Text>
         </View>
 
@@ -40,7 +39,7 @@ const RecipeHeaderCardInfo = ({recipeItem}) => {
             overflow: 'hidden',
           }}>
           <Image
-            source={{uri: recipeItem.strMealThumb}}
+            source={{uri: recipeItem?.strMealThumb}}
             resizeMode="contain"
             style={{
               height: 60,
