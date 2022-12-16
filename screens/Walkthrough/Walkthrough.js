@@ -19,7 +19,11 @@ const Walkthrough = ({navigation}) => {
         {data.walkthrough.map((item, index) => {
           const dotColor = dotPosition.interpolate({
             inputRange: [index - 1, index, index + 1],
-            outputRange: [COLORS.dark08, COLORS.primary, COLORS.dark08],
+            outputRange: [
+              COLORS.lightGreen,
+              COLORS.darkLime,
+              COLORS.lightGreen,
+            ],
             extrapolate: 'clamp',
           });
           return (
