@@ -1,6 +1,7 @@
 import {View, Text, TextInput, StyleSheet} from 'react-native';
 import React from 'react';
-import {COLORS} from '../global';
+import {COLORS, FONTS} from '../global';
+import {BottomTabBarHeightCallbackContext} from '@react-navigation/bottom-tabs';
 
 const CustomInput = ({
   value,
@@ -16,7 +17,12 @@ const CustomInput = ({
         onChangeText={text => setValue(text)}
         placeholder={placeholder}
         secureTextEntry={secureTextEntry}
-        style={{...customStyle}}
+        style={{
+          color: COLORS.black,
+          ...FONTS.body3,
+          paddingHorizontal: 15,
+          ...customStyle,
+        }}
       />
     </View>
   );
