@@ -1,13 +1,8 @@
 import React, {useEffect, useState, useRef} from 'react';
-import {View, Text, SafeAreaView, Animated} from 'react-native';
+import {View, Text, Animated} from 'react-native';
 
 import {COLORS, FONTS, SIZES} from '../global';
-import {
-  BackButton,
-  CustomInput,
-  MealsCard,
-  RecipeHeaderCardInfo,
-} from '../components';
+import {BackButton, RecipeHeaderCardInfo} from '../components';
 import {useSelector, useDispatch} from 'react-redux';
 import {getMealRecipe, fetchMealRecipe} from '../redux/MealRecipeSlice';
 import {nanoid} from '@reduxjs/toolkit';
@@ -154,7 +149,6 @@ const Recipe = ({navigation, route}) => {
                   paddingVertical: SIZES.h1,
                   paddingHorizontal: SIZES.h1,
                 }}>
-                {/* {console.log(renderIngredients(item, 'strMeasure'))} */}
                 <View>{renderIngredients(item, 'strIngredient')}</View>
                 <View>{renderIngredients(item, 'strMeasure', 'flex-end')}</View>
               </View>
@@ -175,7 +169,6 @@ const Recipe = ({navigation, route}) => {
                 {item.strInstructions}
               </Text>
             </View>
-            {/* Quanitity */}
           </View>
         )}
       />
