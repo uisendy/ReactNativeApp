@@ -2,10 +2,6 @@ import {View, Text, StyleSheet} from 'react-native';
 import React, {useState} from 'react';
 import {CustomInput, TextComponent} from '../../components';
 import {COLORS, FONTS, SIZES} from '../../global';
-import {useDispatch, useSelector} from 'react-redux';
-import {addAuth} from '../../redux/AuthenticationSlice';
-import {nanoid} from '@reduxjs/toolkit';
-import {selectAllAuth} from '../../redux/AuthenticationSlice';
 import {auth} from '../../firebase';
 
 const SignUp = ({navigation}) => {
@@ -44,7 +40,6 @@ const SignUp = ({navigation}) => {
       alert('Bad Email or Password mismatch');
       success = false;
     }
-    console.log(success);
     return success;
   };
 
@@ -69,7 +64,6 @@ const SignUp = ({navigation}) => {
         label="Sign Up"
         onPress={() => {
           onSaveAuth();
-          // && navigation.replace('Login');
         }}
       />
     </View>
