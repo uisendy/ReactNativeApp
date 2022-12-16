@@ -32,12 +32,12 @@ function renderCategoryHeader() {
       style={{
         flexDirection: 'row',
         alignItems: 'center',
-        marginTop: 20,
+        marginTop: 10,
         justifyContent: 'space-between',
       }}>
       <Text
         style={{
-          ...FONTS.h2,
+          ...FONTS.h3,
         }}>
         Categories
       </Text>
@@ -62,7 +62,7 @@ function renderCategoryList(navigation, mealCategories) {
   return (
     <View
       style={{
-        marginTop: SIZES.padding,
+        marginTop: 10,
       }}>
       <FlatList
         data={mealCategories}
