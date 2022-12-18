@@ -2,7 +2,6 @@ import React, {useEffect, useState} from 'react';
 import {
   View,
   Text,
-  Image,
   SafeAreaView,
   TouchableOpacity,
   FlatList,
@@ -38,6 +37,7 @@ function renderCategoryHeader() {
       <Text
         style={{
           ...FONTS.h3,
+          color: COLORS.black,
         }}>
         Categories
       </Text>
@@ -48,8 +48,9 @@ function renderCategoryHeader() {
         }}>
         <Text
           style={{
-            color: COLORS.gray,
+            color: COLORS.black,
             ...FONTS.body4,
+            marginRight: 20,
           }}>
           View All
         </Text>
@@ -99,6 +100,7 @@ function renderTrend(navigation) {
       <Text
         style={{
           ...FONTS.h2,
+          color: COLORS.gray,
         }}>
         Recent Recipe
       </Text>
@@ -123,7 +125,6 @@ function renderTrend(navigation) {
 
 const Home = ({navigation}) => {
   const mealCategories = useSelector(getMealCategory);
-  const randomMeal = useSelector(getRandomMeal);
   const [requestStatus, setRequestStatus] = useState(true);
   const status = useSelector(getStatus);
 
@@ -150,7 +151,7 @@ const Home = ({navigation}) => {
         style={{
           flex: 1,
           backgroundColor: COLORS.white,
-          paddingHorizontal: 18,
+          paddingLeft: 18,
         }}>
         <FlatList
           data={mealCategories}
@@ -170,7 +171,7 @@ const Home = ({navigation}) => {
               {/* search */}
               <CustomInput
                 placeholder={'Search Meal'}
-                customStyle={{paddingHorizontal: 18}}
+                customStyle={{marginRight: 18}}
               />
               {/* categoryHeader */}
               {renderCategoryHeader()}
@@ -193,6 +194,7 @@ const Home = ({navigation}) => {
           renderItem={({item}) => (
             <CategoryCard
               categoryItem={item}
+              containerStyle={{marginRight: 18}}
               onPress={() => navigation.navigate('Meals', {category: item})}
             />
           )}
