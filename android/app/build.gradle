@@ -134,7 +134,7 @@ android {
     compileSdkVersion rootProject.ext.compileSdkVersion
 
     defaultConfig {
-        applicationId "com.reactnativeapp"
+        applicationId "com.recipe"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
@@ -219,10 +219,10 @@ android {
     }
     signingConfigs {
         debug {
-            storeFile file('./your_key_name.keystore')
-            storePassword 'reactnativeapp'
-            keyAlias 'your_key_alias'
-            keyPassword 'reactnativeapp'
+            storeFile file('./native-dev.keystore')
+            storePassword 'reactnative'
+            keyAlias 'native-dev'
+            keyPassword 'reactnative'
         }
     }
     buildTypes {
