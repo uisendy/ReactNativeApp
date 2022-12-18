@@ -41,6 +41,7 @@ const Recipe = ({navigation, route}) => {
           <Text
             style={{
               ...FONTS.h3,
+              color: COLORS.dark80,
             }}>
             {item}
           </Text>
@@ -127,6 +128,7 @@ const Recipe = ({navigation, route}) => {
           <View
             style={{
               margin: SIZES.padding,
+              marginBottom: 200,
             }}>
             {/* Ingredients */}
             <Text
@@ -165,6 +167,7 @@ const Recipe = ({navigation, route}) => {
               <Text
                 style={{
                   ...FONTS.midBody3,
+                  color: COLORS.dark80,
                 }}>
                 {item.strInstructions}
               </Text>
