@@ -1,7 +1,6 @@
 import {View, Text, TextInput, StyleSheet} from 'react-native';
 import React from 'react';
 import {COLORS, FONTS} from '../global';
-import {BottomTabBarHeightCallbackContext} from '@react-navigation/bottom-tabs';
 
 const CustomInput = ({
   value,
@@ -11,7 +10,7 @@ const CustomInput = ({
   customStyle,
 }) => {
   return (
-    <View style={styles.container}>
+    <View style={{...styles.container, ...customStyle}}>
       <TextInput
         value={value}
         onChangeText={text => setValue(text)}
